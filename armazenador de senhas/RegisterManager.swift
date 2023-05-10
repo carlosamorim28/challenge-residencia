@@ -7,27 +7,36 @@
 
 import Foundation
 
-class RegisterManager{
-    var registers: [Register]
-    
-    init(){
-        registers = []
-    }
+final class RegisterManager{
+    var registers: [Register] = []
+    var nextId: Int = 0
+   
     
     func manualCreatePassword(usuario: String, senha: String, url: String){
-        
+        let novo: Register = Register(id: self.nextId, usuario: usuario, senha: senha, url: url)
+        if registers.contains(where: { registro in
+            registro.id == novo.id
+        }){
+            print("ID já está sendo utilizado")
+        }else{
+            registers.append(novo)
+            nextId+=1
+        }
     }
     
     func generatePassword(digits: Int) -> String{
         return ""
     }
     
-    func automaticCreatePassword(usuario: String,automaticPassword: String, url: String){
-        
+    func automaticCreatePassword(id: String, usuario: String, url: String){
+        var newPassword: String = ""
+        self.manualCreatePassword(usuario: usuario, senha: newPassword, url: url)
     }
     
-    func removePassword(removed: String){
-        
+    func removePassword(removed: Int){
+        self.registers.removeAll(where: { registro in
+            registro.id == removed
+        })
     }
     
     func viewAllPasswords(){
