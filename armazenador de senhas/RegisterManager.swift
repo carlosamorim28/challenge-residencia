@@ -25,7 +25,10 @@ final class RegisterManager{
     }
     
     func generatePassword(digits: Int) -> String{
-        return ""
+        
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<digits).map{ _ in letters.randomElement()! })
+        
     }
     
     func automaticCreatePassword(id: String, usuario: String, url: String){
