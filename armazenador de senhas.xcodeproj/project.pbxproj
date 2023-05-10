@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640DBA972A0C4598001865C4 /* Choices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DBA962A0C4598001865C4 /* Choices.swift */; };
+		640DBA992A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DBA982A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift */; };
 		641C61372A0AF93000D3303F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641C61362A0AF93000D3303F /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		640DBA962A0C4598001865C4 /* Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choices.swift; sourceTree = "<group>"; };
+		640DBA982A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoicesToRegistrationNewPassword.swift; sourceTree = "<group>"; };
 		641C61332A0AF93000D3303F /* armazenador de senhas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "armazenador de senhas"; sourceTree = BUILT_PRODUCTS_DIR; };
 		641C61362A0AF93000D3303F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		640DBA952A0C4572001865C4 /* enuns */ = {
+			isa = PBXGroup;
+			children = (
+				640DBA962A0C4598001865C4 /* Choices.swift */,
+				640DBA982A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift */,
+			);
+			path = enuns;
+			sourceTree = "<group>";
+		};
 		641C612A2A0AF93000D3303F = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +70,7 @@
 		641C61352A0AF93000D3303F /* armazenador de senhas */ = {
 			isa = PBXGroup;
 			children = (
+				640DBA952A0C4572001865C4 /* enuns */,
 				641C61362A0AF93000D3303F /* main.swift */,
 			);
 			path = "armazenador de senhas";
@@ -120,6 +134,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640DBA992A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift in Sources */,
+				640DBA972A0C4598001865C4 /* Choices.swift in Sources */,
 				641C61372A0AF93000D3303F /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
