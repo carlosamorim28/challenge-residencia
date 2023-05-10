@@ -9,18 +9,7 @@ import Foundation
 
 // Estruturas e classes
 
-enum Choices: Int {
-    case registerNewPassword =  1
-    case showOnePassword = 2
-    case error = 0
-    
-}
 
-enum ChoicesToRegisterNewPassowrd: Int {
-    case manual = 1
-    case automatic = 2
-    case error = 0
-}
 
 
 
