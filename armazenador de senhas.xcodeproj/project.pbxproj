@@ -33,6 +33,7 @@
 		641C61362A0AF93000D3303F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		642E20442A0C496400E4A149 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		642E20462A0C497000E4A149 /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
+		642E20482A0C4F0700E4A149 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 		641C612A2A0AF93000D3303F = {
 			isa = PBXGroup;
 			children = (
+				642E20482A0C4F0700E4A149 /* .gitignore */,
 				641C61352A0AF93000D3303F /* armazenador de senhas */,
 				641C61342A0AF93000D3303F /* Products */,
 			);
