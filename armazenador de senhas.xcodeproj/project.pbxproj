@@ -29,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		640B4AAB2A0D96BF00B1282A /* exemplo-de-codigo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "exemplo-de-codigo.swift"; sourceTree = "<group>"; };
 		640DBA962A0C4598001865C4 /* Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choices.swift; sourceTree = "<group>"; };
 		640DBA982A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoicesToRegistrationNewPassword.swift; sourceTree = "<group>"; };
 		640DBAA02A0C5638001865C4 /* DatabaseAcapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAcapters.swift; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				642E20482A0C4F0700E4A149 /* .gitignore */,
+				640B4AAB2A0D96BF00B1282A /* exemplo-de-codigo.swift */,
 				641C61352A0AF93000D3303F /* armazenador de senhas */,
 				641C61342A0AF93000D3303F /* Products */,
 			);
