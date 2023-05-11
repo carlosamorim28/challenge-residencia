@@ -10,6 +10,7 @@ import Foundation
 enum Choices: Int {
     case registerNewPassword =  1
     case showOnePassword = 2
+    case editOnePassword = 4
     case error = 0
     
 }

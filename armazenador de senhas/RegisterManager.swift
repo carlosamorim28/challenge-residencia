@@ -48,10 +48,21 @@ final class RegisterManager: Codable{
     }
     
 
-    func findPassword(password: String) -> [Register]{
+    func findPasswords(password: String) -> [Register]{
         return registers.filter { registers in
             registers.senha == password
         }
+    }
+    
+    func findIndexID(id: Int) -> Int{
+        if(registers.isEmpty == false){
+            for i in 0..<registers.count{
+                if (registers[i].id == id){
+                    return i
+                }
+            }
+        }
+        return -1
     }
     
     

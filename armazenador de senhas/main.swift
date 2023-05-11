@@ -58,9 +58,9 @@ while(true){
         case .automatic:
 
             print("Digite a quantidade de digitos da senha aleatória: ")
-            if let entrada = readLine(), let choice = Int(entrada){
+            if let entrada = readLine(), let digits = Int(entrada){
                 //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
-                passwordAux = registerManager.generatePassword(digits: choice);
+                passwordAux = registerManager.generatePassword(digits: digits);
                 print("Sua senha será: ", passwordAux)
             } else{
                 print("Quantidade de dígitos inválida")
@@ -124,7 +124,7 @@ while(true){
         print("Digite a senha que será procurada:")
         if let senhaProcurada = readLine(){
             if(confereEntrada(entrada: senhaProcurada)){
-                registerAux = registerManager.findPassword(password: senhaProcurada)
+                registerAux = registerManager.findPasswords(password: senhaProcurada)
                 if(registerAux.isEmpty == false){
                     print("\n")
                     for i in 0..<registerAux.count{
@@ -135,7 +135,33 @@ while(true){
             } else{ print("\n\n Entrada inválida ! \n\n") ; break}
         }else{
             print("erro")
+            break
         }
+    case .editOnePassword:
+        print("Digite o ID da senha a ser alterada:")
+        if let entrada = readLine(), let id = Int(entrada){
+            //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
+            let indice: Int = registerManager.findIndexID(id: id)
+            if(indice>=0){
+                print("Digite a nova senha:")
+                if let entrada = readLine(){
+                    if(confereEntrada(entrada: entrada)){
+                        passwordAux = entrada
+                    }else{ print("\n\n Entrada inválida ! \n\n") ; break}
+                } else{
+                    print("erro")
+                }
+                registerManager.registers[indice].senha = passwordAux
+                print("Senha alterada com sucesso!")
+            }else{
+                print("Id não encontrado")
+                break
+            }
+        } else{
+            print("Entrada deve ser um número Inteiro")
+            break
+        }
+        
     case .error:
         print("error")
     }
