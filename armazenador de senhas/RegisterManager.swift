@@ -25,9 +25,9 @@ final class RegisterManager: Codable{
     }
     
     
-    func removePassword(removed: Int){
+    func removePassword(idRemoved: Int){
         self.registers.removeAll(where: { registro in
-            registro.id == removed
+            registro.id == idRemoved
         })
     }
     

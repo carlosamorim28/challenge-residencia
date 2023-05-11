@@ -13,15 +13,15 @@ import Foundation
 
 
 
-// implementacao de funcao
+// MARK: - Funções
 func generalMenu() -> Choices {
-    print("1 - Registrar uma nova senha \n2 - Vizualizar uma senha\n3 - Vizualizar todas as senhas\n4 - Editar uma senha\n5 - Remover uma senhas\n0 - Sair")
+    print("\n1 - Registrar uma nova senha \n2 - Vizualizar uma senha\n3 - Vizualizar todas as senhas\n4 - Editar uma senha\n5 - Remover uma senhas\n0 - Sair")
     guard let entrada = readLine(), let choice = Int(entrada), let teste = Choices.init(rawValue: choice) else { return Choices.error }
     return teste
 }
 
 func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
-    print("1 - Registrar uma nova senha \n2 - Gerar uma senha\n0 - para sair")
+    print("\n1 - Registrar uma nova senha \n2 - Gerar uma senha\n0 - para sair")
     guard let entrada = readLine(), let choice = Int(entrada), let teste = ChoicesToRegisterNewPassowrd.init(rawValue: choice) else { return ChoicesToRegisterNewPassowrd.error }
     return teste
 }
@@ -40,16 +40,20 @@ func confereEntrada(entrada: String)-> Bool{
     }
 }
 
-// App
+// MARK: - Variáveis
 var registerManager: RegisterManager = RegisterManager()
 var choice: Choices
 var registerAux: [Register]
 var passwordAux: String = ""
 var urlAux: String = ""
 var usuarioAux: String = ""
+
 while(true){
     choice = generalMenu()
     switch choice {
+        
+// MARK: - Register new password
+        
     case .registerNewPassword:
         var submenuCreatePassowrdChoice = generalCreatePasswordMenu()
         switch submenuCreatePassowrdChoice {
@@ -57,7 +61,7 @@ while(true){
             print("0")
         case .automatic:
 
-            print("Digite a quantidade de digitos da senha aleatória: ")
+            print("\nDigite a quantidade de digitos da senha aleatória: ")
             if let entrada = readLine(), let digits = Int(entrada){
                 //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
                 passwordAux = registerManager.generatePassword(digits: digits);
@@ -120,8 +124,11 @@ while(true){
             print("\n\nNovo registro realizado com sucesso!")
             print("Usuário: ", usuarioAux, " Senha: ", passwordAux, " Url: ", urlAux, "\n\n")
         }
+        
+// MARK: - Show one password
+        
     case .showOnePassword:
-        print("Digite a senha que será procurada:")
+        print("\nDigite a senha que será procurada:")
         if let senhaProcurada = readLine(){
             if(confereEntrada(entrada: senhaProcurada)){
                 registerAux = registerManager.findPasswords(password: senhaProcurada)
@@ -137,8 +144,23 @@ while(true){
             print("erro")
             break
         }
+    
+// MARK: - Show all passwords
+        
+    case .showAllPasswords:
+        if (registerManager.registers.isEmpty == false){
+            for i in 0..<registerManager.registers.count{
+                print("\n\nUsuário: ", registerManager.registers[i].usuario, " Senha: ", registerManager.registers[i].senha, " Url: ", registerManager.registers[i].url)
+            }
+        }else{
+            print("Não possui senhas cadastradas!")
+        }
+        
+
+// MARK: - Edit one password
+        
     case .editOnePassword:
-        print("Digite o ID da senha a ser alterada:")
+        print("\nDigite o ID da senha a ser alterada:")
         if let entrada = readLine(), let id = Int(entrada){
             //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
             let indice: Int = registerManager.findIndexID(id: id)
@@ -161,6 +183,28 @@ while(true){
             print("Entrada deve ser um número Inteiro")
             break
         }
+        
+// MARK: - Remove one password
+        
+    case .removeOnePassword:
+        
+        print("\nDigite o ID da senha a ser excluída:")
+        if let entrada = readLine(), let id = Int(entrada){
+            //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
+            let indice: Int = registerManager.findIndexID(id: id)
+            if(indice>=0){
+                registerManager.removePassword(idRemoved: indice)
+                print("Removido com sucesso!")
+            }else{
+                print("Id não encontrado")
+                break
+            }
+        } else{
+            print("Entrada deve ser um número Inteiro")
+            break
+        }
+
+// MARK: - Erro
         
     case .error:
         print("error")
