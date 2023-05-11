@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RegisterManager{
+final class RegisterManager: Codable{
     var registers: [Register] = []
     var nextId: Int = 0
     

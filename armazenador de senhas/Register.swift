@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Register{
+struct Register: Codable{
     var id: Int
     var usuario: String
     var senha: String
