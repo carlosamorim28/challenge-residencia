@@ -7,18 +7,18 @@
 
 import Foundation
 
-final class FilemanagerAdapter: DatabaseAdapter {
-    func loadData() -> [Register] {
-        FileManager.createFile(<#T##self: FileManager##FileManager#>)
-    }
-    
-    func saveRegisterList(registers: [Register]) -> Bool {
-        <#code#>
-    }
-    
-    func getLastIdRegistred() -> Int {
-        <#code#>
-    }
-    
-    
-}
+//final class FilemanagerAdapter: DatabaseAdapter {
+//    func loadData() -> [Register] {
+//        FileManager.createFile(<#T##self: FileManager##FileManager#>)
+//    }
+//    
+//    func saveRegisterList(registers: [Register]) -> Bool {
+//        <#code#>
+//    }
+//    
+//    func getLastIdRegistred() -> Int {
+//        <#code#>
+//    }
+//    
+//    
+//}

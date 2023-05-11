@@ -10,31 +10,20 @@ import Foundation
 final class RegisterManager{
     var registers: [Register] = []
     var nextId: Int = 0
-   
     
-    func manualCreatePassword(usuario: String, senha: String, url: String){
+    
+    func createNewPassword(usuario: String, senha: String, url: String){
         let novo: Register = Register(id: self.nextId, usuario: usuario, senha: senha, url: url)
-        if registers.contains(where: { registro in
-            registro.id == novo.id
-        }){
-            print("ID já está sendo utilizado")
-        }else{
-            registers.append(novo)
-            nextId+=1
-        }
+        registers.append(novo)
+        nextId+=1
     }
+    
     
     func generatePassword(digits: Int) -> String{
-        
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<digits).map{ _ in letters.randomElement()! })
-        
     }
     
-    func automaticCreatePassword(id: String, usuario: String, url: String){
-        var newPassword: String = ""
-        self.manualCreatePassword(usuario: usuario, senha: newPassword, url: url)
-    }
     
     func removePassword(removed: Int){
         self.registers.removeAll(where: { registro in
@@ -45,4 +34,30 @@ final class RegisterManager{
     func viewAllPasswords(){
         
     }
+    
+    func setPassword(id: Int, newSenha: String){
+        
+        if(registers.isEmpty == false){
+            for i in 1...registers.count{
+                if(registers[i].id == id){
+                    registers[i].senha = newSenha
+                }
+            }
+        }
+        
+    }
+    
+
+    func findPassword(password: String) -> Register{
+        for i in registers{
+            if(i.senha == password){
+                return i;
+            }
+        }
+        //A senha procurada não existe:
+        return Register(id: -1, usuario: "", senha: "", url: "");
+    }
+    
+    
 }
+

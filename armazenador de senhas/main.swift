@@ -21,7 +21,7 @@ func generalMenu() -> Choices {
 }
 
 func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
-    print("1 - Registrar uma nova senha \n2 - Vizualizar uma senha\n0 - para sair")
+    print("1 - Registrar uma nova senha \n2 - Gerar uma senha\n0 - para sair")
     guard let entrada = readLine(), let choice = Int(entrada), let teste = ChoicesToRegisterNewPassowrd.init(rawValue: choice) else { return ChoicesToRegisterNewPassowrd.error }
     return teste
 }
@@ -30,6 +30,7 @@ func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
 
 
 // App
+var testte: RegisterManager = RegisterManager()
 var choice: Choices
 while(true){
     choice = generalMenu()
@@ -40,7 +41,7 @@ while(true){
         case .error:
             print("0")
         case .automatic:
-            print("1")
+            print(testte.generatePassword(digits: 5))
         case .manual:
             print("2")
         }
