@@ -13,6 +13,6 @@ enum Choices: Int {
     case showAllPasswords = 3
     case editOnePassword = 4
     case removeOnePassword = 5
-    case error = 0
+    case exit = 0
     
 }

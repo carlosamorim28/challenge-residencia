@@ -16,7 +16,7 @@ import Foundation
 // MARK: - Funções
 func generalMenu() -> Choices {
     print("\n1 - Registrar uma nova senha \n2 - Vizualizar uma senha\n3 - Vizualizar todas as senhas\n4 - Editar uma senha\n5 - Remover uma senhas\n0 - Sair")
-    guard let entrada = readLine(), let choice = Int(entrada), let teste = Choices.init(rawValue: choice) else { return Choices.error }
+    guard let entrada = readLine(), let choice = Int(entrada), let teste = Choices.init(rawValue: choice) else { return Choices.exit }
     return teste
 }
 
@@ -27,18 +27,6 @@ func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
 }
 
 
-func confereEntrada(entrada: String)-> Bool{
-    if(entrada.isEmpty){
-        return false
-    }
-    if(entrada.allSatisfy({ char in
-        (char.isLetter || char.isNumber || char == " ")
-    })){
-        return true
-    } else{
-        return false
-    }
-}
 
 // MARK: - Variáveis
 var registerManager: RegisterManager = RegisterManager()
@@ -47,8 +35,8 @@ var registerAux: [Register]
 var passwordAux: String = ""
 var urlAux: String = ""
 var usuarioAux: String = ""
-
-while(true){
+var exit: Bool = true
+while(exit){
     choice = generalMenu()
     switch choice {
         
@@ -73,7 +61,7 @@ while(true){
             
             print("\nDigite seu usuario: ")
             if let entrada = readLine(){
-                if(confereEntrada(entrada: entrada)){
+                if(!entrada.isEmpty){
                     usuarioAux = entrada
                 }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
@@ -82,7 +70,7 @@ while(true){
             
             print("\nDigite o URL: ")
             if let entrada = readLine(){
-                if(confereEntrada(entrada: entrada)){
+                if(!entrada.isEmpty){
                     urlAux = entrada
                 } else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
@@ -95,7 +83,7 @@ while(true){
             
             print("\nDigite seu usuario: ")
             if let entrada = readLine(){
-                if(confereEntrada(entrada: entrada)){
+                if(!entrada.isEmpty){
                     usuarioAux = entrada
                 }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
@@ -105,7 +93,7 @@ while(true){
             
             print("\nDigite sua senha: ")
             if let entrada = readLine(){
-                if(confereEntrada(entrada: entrada)){
+                if(!entrada.isEmpty){
                     passwordAux = entrada
                 }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
@@ -114,7 +102,7 @@ while(true){
             
             print("\nDigite o URL: ")
             if let entrada = readLine(){
-                if(confereEntrada(entrada: entrada)){
+                if(!entrada.isEmpty){
                     urlAux = entrada
                 }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
@@ -130,7 +118,7 @@ while(true){
     case .showOnePassword:
         print("\nDigite a senha que será procurada:")
         if let senhaProcurada = readLine(){
-            if(confereEntrada(entrada: senhaProcurada)){
+            if(!senhaProcurada.isEmpty){
                 registerAux = registerManager.findPasswords(password: senhaProcurada)
                 if(registerAux.isEmpty == false){
                     print("\n")
@@ -167,7 +155,7 @@ while(true){
             if(indice>=0){
                 print("Digite a nova senha:")
                 if let entrada = readLine(){
-                    if(confereEntrada(entrada: entrada)){
+                    if(!entrada.isEmpty){
                         passwordAux = entrada
                     }else{ print("\n\n Entrada inválida ! \n\n") ; break}
                 } else{
@@ -206,8 +194,8 @@ while(true){
 
 // MARK: - Erro
         
-    case .error:
-        print("error")
+    case .exit:
+        exit = false
     }
    
 }
