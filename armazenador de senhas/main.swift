@@ -27,12 +27,23 @@ func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
 }
 
 
-
+func confereEntrada(entrada: String)-> Bool{
+    if(entrada.isEmpty){
+        return false
+    }
+    if(entrada.allSatisfy({ char in
+        (char.isLetter || char.isNumber || char == " ")
+    })){
+        return true
+    } else{
+        return false
+    }
+}
 
 // App
 var registerManager: RegisterManager = RegisterManager()
 var choice: Choices
-var registerAux: Register
+var registerAux: [Register]
 var passwordAux: String = ""
 var urlAux: String = ""
 var usuarioAux: String = ""
@@ -48,24 +59,31 @@ while(true){
 
             print("Digite a quantidade de digitos da senha aleatória: ")
             if let entrada = readLine(), let choice = Int(entrada){
+                //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
                 passwordAux = registerManager.generatePassword(digits: choice);
                 print("Sua senha será: ", passwordAux)
             } else{
-                print("erro")
+                print("Quantidade de dígitos inválida")
+                break
             }
             
             print("\nDigite seu usuario: ")
             if let entrada = readLine(){
-                usuarioAux = entrada
+                if(confereEntrada(entrada: entrada)){
+                    usuarioAux = entrada
+                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
                 print("erro")
             }
             
             print("\nDigite o URL: ")
             if let entrada = readLine(){
-                urlAux = entrada
+                if(confereEntrada(entrada: entrada)){
+                    urlAux = entrada
+                } else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
                 print("erro")
+                break
             }
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
             
@@ -73,34 +91,48 @@ while(true){
             
             print("\nDigite seu usuario: ")
             if let entrada = readLine(){
-                usuarioAux = entrada
+                if(confereEntrada(entrada: entrada)){
+                    usuarioAux = entrada
+                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
                 print("erro")
+                break
             }
             
             print("\nDigite sua senha: ")
             if let entrada = readLine(){
-                passwordAux = entrada
+                if(confereEntrada(entrada: entrada)){
+                    passwordAux = entrada
+                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
                 print("erro")
             }
             
             print("\nDigite o URL: ")
             if let entrada = readLine(){
-                urlAux = entrada
+                if(confereEntrada(entrada: entrada)){
+                    urlAux = entrada
+                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
             } else{
                 print("erro")
             }
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
-            print("Novo registro realizado com sucesso!")
+            print("\n\nNovo registro realizado com sucesso!")
             print("Usuário: ", usuarioAux, " Senha: ", passwordAux, " Url: ", urlAux, "\n\n")
         }
     case .showOnePassword:
         print("Digite a senha que será procurada:")
         if let senhaProcurada = readLine(){
-            passwordAux = registerManager.findPassword(password: senhaProcurada)
-            print("Esses são os dados relacionados a essa senha: ")
-            
+            if(confereEntrada(entrada: senhaProcurada)){
+                registerAux = registerManager.findPassword(password: senhaProcurada)
+                if(registerAux.isEmpty == false){
+                    print("\n")
+                    for i in 0..<registerAux.count{
+                        print("Usuário: ", registerAux[i].usuario, " Senha: ", registerAux[i].senha, " Url: ", registerAux[i].url)
+                    }
+                    print("\n")
+                }
+            } else{ print("\n\n Entrada inválida ! \n\n") ; break}
         }else{
             print("erro")
         }

@@ -48,14 +48,10 @@ final class RegisterManager: Codable{
     }
     
 
-    func findPassword(password: String) -> Register{
-        for i in registers{
-            if(i.senha == password){
-                return i;
-            }
+    func findPassword(password: String) -> [Register]{
+        return registers.filter { registers in
+            registers.senha == password
         }
-        //A senha procurada não existe:
-        return Register(id: -1, usuario: "", senha: "", url: "");
     }
     
     
