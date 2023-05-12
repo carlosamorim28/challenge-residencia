@@ -29,6 +29,7 @@ func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
 
 
 // MARK: - Variáveis
+var db: DatabaseAdapter = FilemanagerAdapter(fileName: "arquivo_teste", fileNextIdName: "id_teste")
 var registerManager: RegisterManager = RegisterManager()
 var choice: Choices
 var registerAux: [Register]
@@ -36,6 +37,10 @@ var passwordAux: String = ""
 var urlAux: String = ""
 var usuarioAux: String = ""
 var exit: Bool = true
+
+registerManager.registers = db.loadData()
+registerManager.nextId = db.getLastIdRegistred()
+
 while(exit){
     choice = generalMenu()
     switch choice {
@@ -78,6 +83,8 @@ while(exit){
                 break
             }
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
+            db.saveRegisterList(registers: registerManager.registers)
+            db.setLastIdRegistred(nextId: registerManager.nextId)
             
         case .manual:
             
@@ -110,7 +117,8 @@ while(exit){
             }
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
             print("\n\nNovo registro realizado com sucesso!")
-            print("Usuário: ", usuarioAux, " Senha: ", passwordAux, " Url: ", urlAux, "\n\n")
+            db.saveRegisterList(registers: registerManager.registers)
+            db.setLastIdRegistred(nextId: registerManager.nextId)
         }
         
 // MARK: - Show one password
@@ -138,7 +146,7 @@ while(exit){
     case .showAllPasswords:
         if (registerManager.registers.isEmpty == false){
             for i in 0..<registerManager.registers.count{
-                print("\n\nUsuário: ", registerManager.registers[i].usuario, " Senha: ", registerManager.registers[i].senha, " Url: ", registerManager.registers[i].url)
+                print("\n\n ID: ", registerManager.registers[i].id, "Usuário: ", registerManager.registers[i].usuario, " Senha: ", registerManager.registers[i].senha, " Url: ", registerManager.registers[i].url)
             }
         }else{
             print("Não possui senhas cadastradas!")
@@ -172,6 +180,9 @@ while(exit){
             break
         }
         
+        db.saveRegisterList(registers: registerManager.registers)
+        db.setLastIdRegistred(nextId: registerManager.nextId)
+        
 // MARK: - Remove one password
         
     case .removeOnePassword:
@@ -191,11 +202,12 @@ while(exit){
             print("Entrada deve ser um número Inteiro")
             break
         }
-
+        db.saveRegisterList(registers: registerManager.registers)
+        db.setLastIdRegistred(nextId: registerManager.nextId)
 // MARK: - Erro
         
     case .exit:
         exit = false
     }
-   
+    
 }

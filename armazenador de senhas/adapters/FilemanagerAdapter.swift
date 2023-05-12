@@ -81,7 +81,7 @@ final class FilemanagerAdapter: DatabaseAdapter {
             let nextIdDecoded = try decoder.decode(Int.self, from: nextIdEncripted)
             return nextIdDecoded
         } else {
-            return -1
+            return 0
         }
     }catch{
         print("Error")
