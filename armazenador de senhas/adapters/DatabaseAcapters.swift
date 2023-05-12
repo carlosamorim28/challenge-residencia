@@ -11,4 +11,5 @@ protocol DatabaseAdapter {
     func loadData() -> [Register]
     func saveRegisterList(registers: [Register]) -> Bool
     func getLastIdRegistred() -> Int
+    func setLastIdRegistred(nextId: Int) -> Bool
 }
