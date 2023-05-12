@@ -14,18 +14,6 @@ import Foundation
 
 
 // MARK: - Funções
-func generalMenu() -> Choices {
-    print("\n1 - Registrar uma nova senha \n2 - Vizualizar uma senha\n3 - Vizualizar todas as senhas\n4 - Editar uma senha\n5 - Remover uma senhas\n0 - Sair")
-    guard let entrada = readLine(), let choice = Int(entrada), let teste = Choices.init(rawValue: choice) else { return Choices.exit }
-    return teste
-}
-
-func generalCreatePasswordMenu() ->ChoicesToRegisterNewPassowrd {
-    print("\n1 - Registrar uma nova senha \n2 - Gerar uma senha\n0 - para sair")
-    guard let entrada = readLine(), let choice = Int(entrada), let teste = ChoicesToRegisterNewPassowrd.init(rawValue: choice) else { return ChoicesToRegisterNewPassowrd.error }
-    return teste
-}
-
 
 
 // MARK: - Variáveis
@@ -48,73 +36,56 @@ while(exit){
 // MARK: - Register new password
         
     case .registerNewPassword:
-        var submenuCreatePassowrdChoice = generalCreatePasswordMenu()
+        let submenuCreatePassowrdChoice = generalCreatePasswordMenu()
         switch submenuCreatePassowrdChoice {
         case .error:
             print("0")
         case .automatic:
-
-            print("\nDigite a quantidade de digitos da senha aleatória: ")
-            if let entrada = readLine(), let digits = Int(entrada){
-                //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
-                passwordAux = registerManager.generatePassword(digits: digits);
+            
+            passwordAux = generatePassword()
+            if(passwordAux != "Quantidade de dígitos inválida"){
                 print("Sua senha será: ", passwordAux)
-            } else{
-                print("Quantidade de dígitos inválida")
+            }else{
+                print(passwordAux, "\n\n")
                 break
             }
             
-            print("\nDigite seu usuario: ")
-            if let entrada = readLine(){
-                if(!entrada.isEmpty){
-                    usuarioAux = entrada
-                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
-            } else{
-                print("erro")
+            usuarioAux = getUser()
+            if(usuarioAux == "Entrada inválida!"){
+                print(usuarioAux, "\n\n")
+                break;
             }
             
-            print("\nDigite o URL: ")
-            if let entrada = readLine(){
-                if(!entrada.isEmpty){
-                    urlAux = entrada
-                } else{ print("\n\n Entrada inválida ! \n\n") ; break}
-            } else{
-                print("erro")
-                break
+            urlAux = getUrl()
+            if(urlAux == "Entrada inválida!"){
+                print(urlAux, "\n\n")
+                break;
             }
+            
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
             db.saveRegisterList(registers: registerManager.registers)
             db.setLastIdRegistred(nextId: registerManager.nextId)
             
         case .manual:
             
-            print("\nDigite seu usuario: ")
-            if let entrada = readLine(){
-                if(!entrada.isEmpty){
-                    usuarioAux = entrada
-                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
-            } else{
-                print("erro")
-                break
+            usuarioAux = getUser()
+            if(usuarioAux == "Entrada inválida!"){
+                print(usuarioAux, "\n\n")
+                break;
             }
             
-            print("\nDigite sua senha: ")
-            if let entrada = readLine(){
-                if(!entrada.isEmpty){
-                    passwordAux = entrada
-                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
-            } else{
-                print("erro")
+            passwordAux = getSenha()
+            if(passwordAux == "Entrada inválida!"){
+                print(passwordAux, "\n\n")
+                break;
             }
             
-            print("\nDigite o URL: ")
-            if let entrada = readLine(){
-                if(!entrada.isEmpty){
-                    urlAux = entrada
-                }else{ print("\n\n Entrada inválida ! \n\n") ; break}
-            } else{
-                print("erro")
+            urlAux = getUrl()
+            if(urlAux == "Entrada inválida!"){
+                print(urlAux, "\n\n")
+                break;
             }
+
             registerManager.createNewPassword(usuario: usuarioAux, senha: passwordAux, url: urlAux)
             print("\n\nNovo registro realizado com sucesso!")
             db.saveRegisterList(registers: registerManager.registers)
@@ -144,41 +115,22 @@ while(exit){
 // MARK: - Show all passwords
         
     case .showAllPasswords:
-        if (registerManager.registers.isEmpty == false){
-            for i in 0..<registerManager.registers.count{
-                print("\n\n ID: ", registerManager.registers[i].id, "Usuário: ", registerManager.registers[i].usuario, " Senha: ", registerManager.registers[i].senha, " Url: ", registerManager.registers[i].url)
-            }
-        }else{
-            print("Não possui senhas cadastradas!")
-        }
+        
+        print(showAllPasswords(registerManager: registerManager))
         
 
 // MARK: - Edit one password
         
     case .editOnePassword:
-        print("\nDigite o ID da senha a ser alterada:")
-        if let entrada = readLine(), let id = Int(entrada){
-            //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
-            let indice: Int = registerManager.findIndexID(id: id)
-            if(indice>=0){
-                print("Digite a nova senha:")
-                if let entrada = readLine(){
-                    if(!entrada.isEmpty){
-                        passwordAux = entrada
-                    }else{ print("\n\n Entrada inválida ! \n\n") ; break}
-                } else{
-                    print("erro")
-                }
-                registerManager.registers[indice].senha = passwordAux
-                print("Senha alterada com sucesso!")
-            }else{
-                print("Id não encontrado")
-                break
-            }
-        } else{
-            print("Entrada deve ser um número Inteiro")
+        var indice: Int
+        (indice, passwordAux) = editOnePassword(registerManager: registerManager)
+        if(indice == -1){
+            print(passwordAux)
             break
         }
+        registerManager.registers[indice].senha = passwordAux
+        print("Senha alterada com sucesso!")
+        
         
         db.saveRegisterList(registers: registerManager.registers)
         db.setLastIdRegistred(nextId: registerManager.nextId)
@@ -187,21 +139,8 @@ while(exit){
         
     case .removeOnePassword:
         
-        print("\nDigite o ID da senha a ser excluída:")
-        if let entrada = readLine(), let id = Int(entrada){
-            //Não precisa conferir se é um número pois já acontece isso no Int(entrada) da linha anterior
-            let indice: Int = registerManager.findIndexID(id: id)
-            if(indice>=0){
-                registerManager.removePassword(idRemoved: indice)
-                print("Removido com sucesso!")
-            }else{
-                print("Id não encontrado")
-                break
-            }
-        } else{
-            print("Entrada deve ser um número Inteiro")
-            break
-        }
+        print(removeOnePassword(registerManager: registerManager))
+        
         db.saveRegisterList(registers: registerManager.registers)
         db.setLastIdRegistred(nextId: registerManager.nextId)
 // MARK: - Erro

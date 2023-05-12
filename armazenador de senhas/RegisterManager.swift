@@ -19,21 +19,12 @@ final class RegisterManager: Codable{
     }
     
     
-    func generatePassword(digits: Int) -> String{
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<digits).map{ _ in letters.randomElement()! })
-    }
-    
-    
     func removePassword(idRemoved: Int){
         self.registers.removeAll(where: { registro in
             registro.id == idRemoved
         })
     }
     
-    func viewAllPasswords(){
-        
-    }
     
     func setPassword(id: Int, newSenha: String){
         
