@@ -95,35 +95,20 @@ while(exit){
 // MARK: - Show one password
         
     case .showOnePassword:
-        print("\nDigite a senha que será procurada:")
-        if let senhaProcurada = readLine(){
-            if(!senhaProcurada.isEmpty){
-                registerAux = registerManager.findPasswords(password: senhaProcurada)
-                if(registerAux.isEmpty == false){
-                    print("\n")
-                    for i in 0..<registerAux.count{
-                        print("Usuário: ", registerAux[i].usuario, " Senha: ", registerAux[i].senha, " Url: ", registerAux[i].url)
-                    }
-                    print("\n")
-                }
-            } else{ print("\n\n Entrada inválida ! \n\n") ; break}
-        }else{
-            print("erro")
-            break
-        }
+        
+        print("\n", ShowOnePassword().execute(registerManager: registerManager))
     
 // MARK: - Show all passwords
         
     case .showAllPasswords:
-        
-        print(showAllPasswords(registerManager: registerManager))
+        print(ShowAllPassword().execute(registerManager: registerManager))
         
 
 // MARK: - Edit one password
         
     case .editOnePassword:
         var indice: Int
-        (indice, passwordAux) = editOnePassword(registerManager: registerManager)
+        (indice, passwordAux) = EditOnePassword().execute(registerManager: registerManager)
         if(indice == -1){
             print(passwordAux)
             break
@@ -139,7 +124,7 @@ while(exit){
         
     case .removeOnePassword:
         
-        print(removeOnePassword(registerManager: registerManager))
+        print(RemoveOnePassword().execute(registerManager: registerManager))
         
         db.saveRegisterList(registers: registerManager.registers)
         db.setLastIdRegistred(nextId: registerManager.nextId)
@@ -150,3 +135,7 @@ while(exit){
     }
     
 }
+
+/// teste: any
+///
+/// func(testa  Int)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileHelper {
+private struct FileHelper {
     private let manager = FileManager.default
     
     func createDocument(named fileName: String, with data: Data)-> Bool {

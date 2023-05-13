@@ -20,9 +20,14 @@
 		64B32D5B2A0EEA7B00D7030A /* getSenha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D5A2A0EEA7B00D7030A /* getSenha.swift */; };
 		64B32D5D2A0EEA8B00D7030A /* getUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D5C2A0EEA8B00D7030A /* getUrl.swift */; };
 		64B32D5F2A0EECB500D7030A /* generatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D5E2A0EECB500D7030A /* generatePassword.swift */; };
-		64B32D612A0EF0DC00D7030A /* showAllPasswords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D602A0EF0DC00D7030A /* showAllPasswords.swift */; };
-		64B32D632A0EF2DC00D7030A /* editOnePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D622A0EF2DC00D7030A /* editOnePassword.swift */; };
-		64B32D652A0EF6EA00D7030A /* removeOnePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D642A0EF6EA00D7030A /* removeOnePassword.swift */; };
+		64B32D612A0EF0DC00D7030A /* ShowAllPasswords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D602A0EF0DC00D7030A /* ShowAllPasswords.swift */; };
+		64B32D632A0EF2DC00D7030A /* EditOnePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D622A0EF2DC00D7030A /* EditOnePassword.swift */; };
+		64B32D652A0EF6EA00D7030A /* RemoveOnePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B32D642A0EF6EA00D7030A /* RemoveOnePassword.swift */; };
+		64FB6A632A0EFBDC0088477A /* ShowAllPasswodsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB6A622A0EFBDC0088477A /* ShowAllPasswodsProtocol.swift */; };
+		64FB6A662A0EFDBC0088477A /* EditOnePasswordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB6A652A0EFDBC0088477A /* EditOnePasswordProtocol.swift */; };
+		64FB6A692A0F033D0088477A /* RemoveOnePasswordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB6A682A0F033D0088477A /* RemoveOnePasswordProtocol.swift */; };
+		64FB6A6C2A0F06D20088477A /* ShowOnePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB6A6B2A0F06D20088477A /* ShowOnePassword.swift */; };
+		64FB6A6E2A0F09EF0088477A /* ShowOnePasswordProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB6A6D2A0F09EF0088477A /* ShowOnePasswordProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,9 +59,14 @@
 		64B32D5A2A0EEA7B00D7030A /* getSenha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSenha.swift; sourceTree = "<group>"; };
 		64B32D5C2A0EEA8B00D7030A /* getUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getUrl.swift; sourceTree = "<group>"; };
 		64B32D5E2A0EECB500D7030A /* generatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generatePassword.swift; sourceTree = "<group>"; };
-		64B32D602A0EF0DC00D7030A /* showAllPasswords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAllPasswords.swift; sourceTree = "<group>"; };
-		64B32D622A0EF2DC00D7030A /* editOnePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editOnePassword.swift; sourceTree = "<group>"; };
-		64B32D642A0EF6EA00D7030A /* removeOnePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeOnePassword.swift; sourceTree = "<group>"; };
+		64B32D602A0EF0DC00D7030A /* ShowAllPasswords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllPasswords.swift; sourceTree = "<group>"; };
+		64B32D622A0EF2DC00D7030A /* EditOnePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOnePassword.swift; sourceTree = "<group>"; };
+		64B32D642A0EF6EA00D7030A /* RemoveOnePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveOnePassword.swift; sourceTree = "<group>"; };
+		64FB6A622A0EFBDC0088477A /* ShowAllPasswodsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllPasswodsProtocol.swift; sourceTree = "<group>"; };
+		64FB6A652A0EFDBC0088477A /* EditOnePasswordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOnePasswordProtocol.swift; sourceTree = "<group>"; };
+		64FB6A682A0F033D0088477A /* RemoveOnePasswordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveOnePasswordProtocol.swift; sourceTree = "<group>"; };
+		64FB6A6B2A0F06D20088477A /* ShowOnePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnePassword.swift; sourceTree = "<group>"; };
+		64FB6A6D2A0F09EF0088477A /* ShowOnePasswordProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnePasswordProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,15 +142,68 @@
 		64B32D572A0EE9F200D7030A /* functions */ = {
 			isa = PBXGroup;
 			children = (
+				64FB6A602A0EFB8E0088477A /* features */,
+				64FB6A5F2A0EFB450088477A /* utils */,
+			);
+			path = functions;
+			sourceTree = "<group>";
+		};
+		64FB6A5F2A0EFB450088477A /* utils */ = {
+			isa = PBXGroup;
+			children = (
 				64B32D582A0EEA6F00D7030A /* getUser.swift */,
 				64B32D5A2A0EEA7B00D7030A /* getSenha.swift */,
 				64B32D5C2A0EEA8B00D7030A /* getUrl.swift */,
 				64B32D5E2A0EECB500D7030A /* generatePassword.swift */,
-				64B32D602A0EF0DC00D7030A /* showAllPasswords.swift */,
-				64B32D622A0EF2DC00D7030A /* editOnePassword.swift */,
-				64B32D642A0EF6EA00D7030A /* removeOnePassword.swift */,
 			);
-			path = functions;
+			path = utils;
+			sourceTree = "<group>";
+		};
+		64FB6A602A0EFB8E0088477A /* features */ = {
+			isa = PBXGroup;
+			children = (
+				64FB6A6A2A0F06B40088477A /* show-one-password */,
+				64FB6A672A0EFF350088477A /* remove-one-password */,
+				64FB6A642A0EFD620088477A /* edit-one-password */,
+				64FB6A612A0EFBBB0088477A /* show-all-passwords */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		64FB6A612A0EFBBB0088477A /* show-all-passwords */ = {
+			isa = PBXGroup;
+			children = (
+				64B32D602A0EF0DC00D7030A /* ShowAllPasswords.swift */,
+				64FB6A622A0EFBDC0088477A /* ShowAllPasswodsProtocol.swift */,
+			);
+			path = "show-all-passwords";
+			sourceTree = "<group>";
+		};
+		64FB6A642A0EFD620088477A /* edit-one-password */ = {
+			isa = PBXGroup;
+			children = (
+				64B32D622A0EF2DC00D7030A /* EditOnePassword.swift */,
+				64FB6A652A0EFDBC0088477A /* EditOnePasswordProtocol.swift */,
+			);
+			path = "edit-one-password";
+			sourceTree = "<group>";
+		};
+		64FB6A672A0EFF350088477A /* remove-one-password */ = {
+			isa = PBXGroup;
+			children = (
+				64B32D642A0EF6EA00D7030A /* RemoveOnePassword.swift */,
+				64FB6A682A0F033D0088477A /* RemoveOnePasswordProtocol.swift */,
+			);
+			path = "remove-one-password";
+			sourceTree = "<group>";
+		};
+		64FB6A6A2A0F06B40088477A /* show-one-password */ = {
+			isa = PBXGroup;
+			children = (
+				64FB6A6B2A0F06D20088477A /* ShowOnePassword.swift */,
+				64FB6A6D2A0F09EF0088477A /* ShowOnePasswordProtocol.swift */,
+			);
+			path = "show-one-password";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,16 +266,21 @@
 			files = (
 				642E20472A0C497000E4A149 /* RegisterManager.swift in Sources */,
 				640DBAA12A0C5638001865C4 /* DatabaseAcapters.swift in Sources */,
+				64FB6A6C2A0F06D20088477A /* ShowOnePassword.swift in Sources */,
 				640DBA992A0C45D7001865C4 /* ChoicesToRegistrationNewPassword.swift in Sources */,
+				64FB6A632A0EFBDC0088477A /* ShowAllPasswodsProtocol.swift in Sources */,
+				64FB6A692A0F033D0088477A /* RemoveOnePasswordProtocol.swift in Sources */,
 				64B32D592A0EEA6F00D7030A /* getUser.swift in Sources */,
 				64B32D5B2A0EEA7B00D7030A /* getSenha.swift in Sources */,
-				64B32D652A0EF6EA00D7030A /* removeOnePassword.swift in Sources */,
-				64B32D632A0EF2DC00D7030A /* editOnePassword.swift in Sources */,
+				64B32D652A0EF6EA00D7030A /* RemoveOnePassword.swift in Sources */,
+				64FB6A662A0EFDBC0088477A /* EditOnePasswordProtocol.swift in Sources */,
+				64B32D632A0EF2DC00D7030A /* EditOnePassword.swift in Sources */,
 				64B32D562A0EE89600D7030A /* createPassword.swift in Sources */,
 				64B32D542A0EE68E00D7030A /* mainMenu.swift in Sources */,
-				64B32D612A0EF0DC00D7030A /* showAllPasswords.swift in Sources */,
+				64B32D612A0EF0DC00D7030A /* ShowAllPasswords.swift in Sources */,
 				640DBAA32A0C5A0D001865C4 /* FilemanagerAdapter.swift in Sources */,
 				64B32D5D2A0EEA8B00D7030A /* getUrl.swift in Sources */,
+				64FB6A6E2A0F09EF0088477A /* ShowOnePasswordProtocol.swift in Sources */,
 				64B32D5F2A0EECB500D7030A /* generatePassword.swift in Sources */,
 				640DBA972A0C4598001865C4 /* Choices.swift in Sources */,
 				642E20452A0C496400E4A149 /* Register.swift in Sources */,
