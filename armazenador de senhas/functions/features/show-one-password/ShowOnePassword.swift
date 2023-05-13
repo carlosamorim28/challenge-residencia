@@ -11,13 +11,15 @@ class ShowOnePassword: ShowAllPasswordsProtocol {
     func execute(registerManager: RegisterManager) -> String {
         var retorno: String = ""
         print("\nDigite a senha que será procurada:")
-        if let senhaProcurada = readLine(){
-            if(!senhaProcurada.isEmpty){
-                registerAux = registerManager.findPasswords(password: senhaProcurada)
+        if let valorProcurado = readLine(){
+            if(!valorProcurado.isEmpty){
+                registerAux = registerManager.registers.filter { registers in
+                    registers.senha == valorProcurado || registers.id == Int(valorProcurado) || valorProcurado == registers.url
+                }
                 if(registerAux.isEmpty == false){
                     print("\n")
                     for i in 0..<registerAux.count{
-                        retorno += "Usuário: \(registerAux[i].usuario) ; Senha:  \(registerAux[i].senha) ; Url:  \(registerAux[i].url) \n"
+                        retorno +=  "ID: \(registerAux[i].id) ; Usuário: \(registerAux[i].usuario) ; Senha:  \(registerAux[i].senha) ; Url:  \(registerAux[i].url) \n"
                     }
                     return retorno
                 }else {
